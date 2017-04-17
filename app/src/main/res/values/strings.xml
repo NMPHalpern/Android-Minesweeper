@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sweeper</string>
+    <string name="select">Select Difficulty</string>
+    <string name="easy">Easy</string>
+    <string name="hard">Hard</string>
+    <string name="title_activity_game">Game</string>
+</resources>
