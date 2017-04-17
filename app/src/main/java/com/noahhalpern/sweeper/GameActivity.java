@@ -48,8 +48,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Intent intent = getIntent();
         mLevel = intent.getIntExtra(MainActivity.GAME_LEVEL, 0);

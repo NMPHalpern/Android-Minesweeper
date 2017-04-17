@@ -29,7 +29,8 @@ public class CellView extends TextView {
         mBackgroundPaint.setStyle(Paint.Style.FILL);
         mBackgroundPaint.setColor(ContextCompat.getColor(mContext, R.color.colorAccent));
         mTextPaint.setColor(ContextCompat.getColor(mContext, R.color.black));
-        mTextPaint.setTextSize(80);
+        mTextPaint.setTextSize(18 * getResources().getDisplayMetrics().density);
+        mTextPaint.setTextAlign(Paint.Align.CENTER);
     }
 
     public boolean select(){
@@ -74,7 +75,9 @@ public class CellView extends TextView {
         canvas.drawLine(0, 0, 0, getHeight(), mBorderPaint);
         if (mHint != null){
             Log.i("CELL VIEW", "SETTING HINT TEXT");
-            canvas.drawText(mHint, getWidth()/2 - 10, getWidth()/2 - 10, mTextPaint);
+            int xPos = (canvas.getWidth() / 2);
+            int yPos = (int) ((canvas.getHeight() / 2) - ((mTextPaint.descent() + mTextPaint.ascent()) / 2)) ;
+            canvas.drawText(mHint, xPos, yPos, mTextPaint);
         }
     }
 
