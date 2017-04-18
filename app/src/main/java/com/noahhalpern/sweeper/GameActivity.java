@@ -89,6 +89,7 @@ public class GameActivity extends AppCompatActivity {
     public void restartGame(Button button){
         recreate();
     }
+
     private void handleCell(CellView cell){
         ArrayList<CellView> adjCells = getAdjacentCells(cell);
         for (CellView adjCell : adjCells){
@@ -97,7 +98,6 @@ public class GameActivity extends AppCompatActivity {
                 adjCell.select();
                 handleCell(adjCell);
             } else if (!adjCell.isMined && !adjCell.isRevealed){
-                Log.i("HANDLE CELL", "HINT: " + String.valueOf(mineCount));
                 adjCell.setHint(String.valueOf(mineCount));
                 adjCell.select();
             }
@@ -106,37 +106,15 @@ public class GameActivity extends AppCompatActivity {
 
     private ArrayList<CellView> getAdjacentCells(CellView cell){
         ArrayList<CellView> adjCells = new ArrayList<CellView>();
-        CellView cell1 = getAdjacentCell(cell.row - 1, cell.column - 1);
-        if (cell1 != null){
-            adjCells.add(cell1);
-        }
-        CellView cell2 = getAdjacentCell(cell.row - 1, cell.column);
-        if (cell2 != null){
-            adjCells.add(cell2);
-        }
-        CellView cell3 = getAdjacentCell(cell.row - 1, cell.column + 1);
-        if (cell3 != null){
-            adjCells.add(cell3);
-        }
-        CellView cell4 = getAdjacentCell(cell.row, cell.column - 1);
-        if (cell4 != null){
-            adjCells.add(cell4);
-        }
-        CellView cell5 = getAdjacentCell(cell.row, cell.column + 1);
-        if (cell5 != null){
-            adjCells.add(cell5);
-        }
-        CellView cell6 = getAdjacentCell(cell.row + 1, cell.column - 1);
-        if (cell6 != null){
-            adjCells.add(cell6);
-        }
-        CellView cell7 = getAdjacentCell(cell.row + 1, cell.column);
-        if (cell7 != null){
-            adjCells.add(cell7);
-        }
-        CellView cell8 = getAdjacentCell(cell.row + 1, cell.column + 1);
-        if (cell8 != null){
-            adjCells.add(cell8);
+
+        int[] adjInts = {-1, 0, 1};
+        for (int rowPos : adjInts){
+            for (int colPos : adjInts){
+                CellView adjCell = getAdjacentCell(cell.row + rowPos, cell.column + colPos);
+                if (adjCell != null && adjCell != cell){
+                    adjCells.add(adjCell);
+                }
+            }
         }
 
         return adjCells;
