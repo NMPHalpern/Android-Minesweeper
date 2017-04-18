@@ -38,6 +38,8 @@ public class CellView extends TextView {
 
         if (isMined){
             mBackgroundPaint.setColor(ContextCompat.getColor(mContext, R.color.black));
+            mTextPaint.setColor(ContextCompat.getColor(mContext, R.color.colorAccent));
+            setHint("*");
         } else {
             mBackgroundPaint.setColor(ContextCompat.getColor(mContext, R.color.grey));
         }

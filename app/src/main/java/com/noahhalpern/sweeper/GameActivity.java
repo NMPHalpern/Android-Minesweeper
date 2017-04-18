@@ -73,7 +73,6 @@ public class GameActivity extends AppCompatActivity {
     @OnItemClick(R.id.game_board)
     public void selectCell(AdapterView<?> parent, CellView clickedCell, int position, long id){
         int index = ((clickedCell.row * mGameBoardRowNum) - (mGameBoardRowNum - clickedCell.column)) - 1;
-        Log.i("ITEM CLICK", "ROW: " + clickedCell.row + " COLUMN: " + clickedCell.column + " INDEX: " + index);
         boolean proceed = clickedCell.select();
         if (proceed){
             handleCell(clickedCell);
